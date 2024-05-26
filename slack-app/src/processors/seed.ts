@@ -6,7 +6,12 @@ import { createEmbedding } from "utils/openai";
 
 const seedProcessor = (context: IContext) => {
   return async (job: Job<CommandPayload>) => {
-    const { channel_id, response_url, team_id } = job.data;
+    const { channel_id, response_url, team_id, text } = job.data;
+
+    console.log(
+      `/seed channel_id: ${channel_id} team_id: ${team_id} text: ${text}`
+    );
+
     try {
       const integration = await context.db.platformIntegrationInfo.findFirst({
         where: {

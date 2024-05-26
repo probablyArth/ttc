@@ -6,7 +6,10 @@ import { CommandPayload } from "types/slack";
 const deleteProcessor = (context: IContext) => {
   return async (job: Job<CommandPayload>) => {
     try {
-      const { response_url, team_id } = job.data;
+      const { response_url, team_id, channel_id, text } = job.data;
+      console.log(
+        `/delete channel_id: ${channel_id} team_id: ${team_id} text: ${text}`
+      );
       const integration = await context.db.platformIntegrationInfo.findFirst({
         where: {
           platform: "SLACK",

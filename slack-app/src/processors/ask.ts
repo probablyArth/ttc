@@ -7,7 +7,9 @@ import { createEmbedding, prompt } from "utils/openai";
 const askProcesser = (context: IContext) => {
   return async (job: Job<CommandPayload>) => {
     const { channel_id, response_url, team_id, text } = job.data;
-
+    console.log(
+      `/ask channel_id: ${channel_id} team_id: ${team_id} text: ${text}`
+    );
     try {
       if (!text) {
         await axios.post(response_url, {
