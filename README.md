@@ -1,3 +1,3 @@
-Talk To Channels
+# Talk To Channels
 
 - [x] Slack Integration
